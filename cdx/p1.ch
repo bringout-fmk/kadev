@@ -1,0 +1,19 @@
+#define     AOPSTINA_ST  1
+#define     ASTR_SPR     2
+#define     AULICA_ST    3
+#define     AZAPOSLEN    4
+#define     ABRAC_ST     5
+#define     AMJESTO_ST   6
+#define     AMZ_ST       7
+#define     AZANIMANJE   8
+#define     ANAZIV_RO    9
+#define     ASIF_JED     10
+#define     AVES         11
+#define     ACIN         12
+#define     ADUZNOST     13
+#define     ADAT_ISTUP   14
+#define     ADAT_S_JED   15
+#define     APRISUTNOST  16
+#define     ABROJ_LEG    17
+#define     ABROJ        17
+
