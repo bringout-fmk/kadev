@@ -155,7 +155,7 @@ elseif Ch==ASC("R") .or. Ch==ASC("r")
 
 	nPrArr:=SELECT()
   	
-	rpt_rjes()
+	p_rjes()
   	
 	IF LASTKEY()==K_ESC
 		SELECT (nPrArr)
@@ -394,9 +394,11 @@ else
           			aPom:=UzmiVar( SUBSTR(cPom,2,2) )
           			?? LEFT(cLin,nPom-1)
           			cLin:=SUBSTR(cLin,nPom+4)
-          			IF !EMPTY(aPom[1])
+          			
+				IF !EMPTY(aPom[1])
             				PrnKod_ON(aPom[1])
          			ENDIF
+				
           			IF aPom[1]=="K"  
 					// ako evaluacija vrsi i stampu npr.
             				cPom:=&(aPom[2]) 
@@ -405,7 +407,8 @@ else
             				cPom:=&(aPom[2])
             				?? cPom
           			ENDIF
-          			IF !EMPTY(aPom[1])
+          			
+				IF !EMPTY(aPom[1])
             				PrnKod_OFF(aPom[1])
           			ENDIF
         		ELSE
