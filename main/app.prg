@@ -188,10 +188,13 @@ SetSpecifVars()
 
 O_PARAMS
 
-public glBezVoj := ( IzFMKINI("KADEV","BezVojneEvidencije","N",KUMPATH)=="D" )
+public glBezVoj:=.t.
+public gVojEvid := "N"
+// bez vojne evidencije
 public gnLMarg:=1
+// lijeva margina
 public gnTMarg:=1
-// lijeva margina teksta
+// top-gornja margina teksta
 public gTabela:=1          
 // fino crtanje tabele
 public gA43:="4"           
@@ -224,6 +227,11 @@ Rpar("k2",@gDodKar2)
 Rpar("tp",@gTrPromjena)
 Rpar("fi",@gNFirma)
 Rpar("co",@gCentOn)
+Rpar("ve",@gVojEvid)
+
+if gVojEvid == "D"
+	glBezVoj := .f.
+endif
 
 select params
 use

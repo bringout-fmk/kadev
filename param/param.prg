@@ -25,6 +25,7 @@ Rpar("k1", @gDodKar1)
 Rpar("k2", @gDodKar2)
 Rpar("fi", @gNFirma)
 Rpar("co", @gCentOn)
+Rpar("ve", @gVojEvid)
 
 UsTipke()
 
@@ -54,8 +55,10 @@ AADD(aPars, {"Sifra promjene za brzi pregled i unos", ;
 	"gTrPromjena", "", "",  } )
 AADD(aPars, {"U datumima prikazivati potpunu godinu (D/N) ?", ;
 	 "gCentOn", "gCentOn$'DN'", "@!", } )
+AADD(aPars, {"Vojna evidencija (D/N) ?", ;
+	 "gVojEvid", "gVojEvid$'DN'", "@!", } )
 
-VarEdit(aPars, 7, 1, 21, 78, "***** Parametri rada programa", "B1" )
+VarEdit(aPars, 6, 1, 22, 78, "***** Parametri rada programa", "B1" )
 
 BosTipke()
 
@@ -72,6 +75,7 @@ if LastKey() <> K_ESC
   	Wpar("k2",gDodKar2)
   	Wpar("fi",gNFirma)
   	Wpar("co",gCentOn)
+  	Wpar("ve",gVojEvid)
   	select params
 	use
 endif
