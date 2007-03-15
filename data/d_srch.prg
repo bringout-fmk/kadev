@@ -4,130 +4,63 @@
 
 function mnu_srch()
 
+set epoch to 1910
+
 o_tables()
 
 select rmj
-#ifndef C50
 set order to tag "ID"
-#else
-set order to I_ID
-#endif
 select k_0
 set relation to idRmj into rmj
-
 select rj
-#ifndef C50
 set order to tag "ID"
-#else
-set order to I_ID
-#endif
 select k_0
 set relation to idRj into rj additive
-
-
 select rjrmj
-#ifndef C50
 set order to tag "ID"
-#else
-set order to I_ID
-#endif
 select k_0
 set relation to idRj+idrmj into rjrmj additive
-
 select strspr
-#ifndef C50
 set order to tag "ID"
-#else
-set order to I_ID
-#endif
 select k_0
 set relation to IdStrSpr into strspr additive
-
 select mz
-#ifndef C50
 set order to tag "ID"
-#else
-set order to I_ID
-#endif
 select k_0
 set relation to IdMzSt into mz additive
-
-
 select k1
-#ifndef C50
 set order to tag "ID"
-#else
-set order to I_ID
-#endif
 select k_0
 set relation to IdK1 into k1 additive
-
 select k2
-#ifndef C50
 set order to tag "ID"
-#else
-set order to I_ID
-#endif
 select k_0
 set relation to IdK2 into k2 additive
-
-
 select zanim
-#ifndef C50
 set order to tag "ID"
-#else
-set order to I_ID
-#endif
 select k_0
 set relation to IdZanim into zanim additive
-
 select nac
-#ifndef C50
 set order to tag "ID"
-#else
-set order to I_ID
-#endif
 select k_0
 set relation to Idnac into nac additive
-
 select rrasp
-#ifndef C50
 set order to tag "ID"
-#else
-set order to I_ID
-#endif
 select k_0
 set relation to IdRRasp into rrasp additive
-
 select cin
-#ifndef C50
 set order to tag "ID"
-#else
-set order to I_ID
-#endif
 select k_0
 set relation to IdCin into cin additive
-
 select VES
-#ifndef C50
 set order to tag "ID"
-#else
-set order to I_ID
-#endif
 select k_0
 set relation to IdVEs into ves additive
-
 select RJRmj
-#ifndef C50
 set order to tag "ID"
-#else
-set order to I_ID
-#endif
 select k_0
 set relation to IdRJ+IDRMJ into rjrmj additive
-
 select k_0
-
 
 
 cPic:="@!S30"
@@ -829,36 +762,35 @@ function pGET5()
 read
 return LastKey()
 
-****************************
-****************************
-function Karton(bFor) // nije bas bfor - vise bi odgovaralo bWhile
-LOCAL cTekst,nPom:=0
+
+// --------------------------------------------
+// stampa kartona
+// --------------------------------------------
+function Karton( bFor ) // nije bas bfor - vise bi odgovaralo bWhile
+local cTekst
+local nPom:=0
 
 // vidjeti sta je ovo ????!??????
-// IniR2()
+IniRPT()
 
-cImeFajla:=ALLTRIM(IzborFajla(PRIVPATH+"*.def"))
+cImeFajla := ALLTRIM(IzborFajla(PRIVPATH+"*.def"))
 
 IF EMPTY(cImeFajla)
-  Ch:=0
-  return nil
+	Ch:=0
+  	return nil
 ELSE
-  cImefajla := PRIVPATH+"\"+cImefajla
-  cTekst:=MEMOREAD(cImeFajla)
-  DO WHILE .t.
-   nPom:=AT("#",cTekst)
-   IF nPom!=0
-     AADD( aTijeloP , Blokovi(SUBSTR(cTekst,nPom+1,2)) )
-     cTekst:=SUBSTR(cTekst,nPom+3)
-   ELSE
-     EXIT
-   ENDIF
-  ENDDO
+  	cImefajla := PRIVPATH+"\"+cImefajla
+  	cTekst:=MEMOREAD(cImeFajla)
+  	DO WHILE .t.
+   		nPom:=AT("#",cTekst)
+   		IF nPom!=0
+     			AADD( aTijeloP , Blokovi(SUBSTR(cTekst,nPom+1,2)) )
+     			cTekst:=SUBSTR(cTekst,nPom+3)
+   		ELSE
+     			EXIT
+   		ENDIF
+  	ENDDO
 ENDIF
-
-
-// Detail linije - unutar tijela              //
-***********************************************
 
 // init detaila
 nCDet1:=0
@@ -887,22 +819,28 @@ AADD(aDetP,{ {|| datumOD}, {|| DatumDo}, {|| IdPromj},;
              {|| Dokument},{|| Opis}, {|| Nadlezan},;
               ;
            } )
-*******************************
 
- select (F_K_0)
-  START PRINT RET
-   IF gPrinter=="L"
-     gPO_Land()
-   ENDIF
-   R2(cImeFajla,"PRN",bFor,2)
-   IF gPrinter=="L"
-     gPO_Port()
-   ENDIF
-  END PRINT
- select (F_K_0)
+select (F_K_0)
+
+START PRINT RET
+IF gPrinter=="L"
+	gPO_Land()
+ENDIF
+
+R2(cImeFajla,"PRN",bFor,2)
+
+IF gPrinter=="L"
+	gPO_Port()
+ENDIF
+
+END PRINT
+select (F_K_0)
+
 return nil
 
-FUNCTION Blokovi(cIndik)
+
+
+function Blokovi(cIndik)
  LOCAL bVrati
  DO CASE
    CASE cIndik=="01"
@@ -1033,7 +971,7 @@ FUNCTION TekRec()
 RETURN (NIL)
 
 
-FUNCTION TacnoNO(cIzraz,bIni,bWhile,bSkip,bEnd)
+function TacnoNO(cIzraz,bIni,bWhile,bSkip,bEnd)
  LOCAL i, fRez:=.f.
  PRIVATE cPom
 
@@ -1075,8 +1013,8 @@ RETURN
 
 
 // str.sprema predviÐena pravilnikom
-FUNC StrSprPP()
- LOCAL cV
+function StrSprPP()
+local cV
  cV := "od "+RJRMJ->IdStrSprOd+" do "+RJRMJ->IdStrSprDo
  IF !EMPTY(RJRMJ->idzanim1)
    cV += ", "+TRIM(NazZanim(RJRMJ->idzanim1))
@@ -1092,14 +1030,18 @@ FUNC StrSprPP()
  ENDIF
 RETURN cV
 
-FUNC NazZanim(cId)
- LOCAL nArr:=SELECT(), cN:="", nRec
-  SELECT ZANIM
-  nRec:=RECNO()
-  SEEK cId
-  cN:=naz
-  GO (nRec)
-  SELECT (nArr)
-RETURN cN
+
+
+function NazZanim(cId)
+local nArr:=SELECT()
+local cN:="", nRec
+
+SELECT ZANIM
+nRec:=RECNO()
+SEEK cId
+cN:=naz
+GO (nRec)
+SELECT (nArr)
+return cN
 
 

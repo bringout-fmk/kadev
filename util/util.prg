@@ -92,7 +92,7 @@ return .f.
 
 
 
-FUNCTION OSVAL(aIDDef,cIzraz)
+function OSVAL(aIDDef,cIzraz)
  LOCAL i:=0, nArr:=SELECT()
  IF cIzraz==NIL
    cIzraz77:=".t."
@@ -113,7 +113,7 @@ FUNCTION OSVAL(aIDDef,cIzraz)
 RETURN &cIzraz77
 
 
-FUNCTION GS()
+function GS()
  LOCAL aRstE,aRstB,aRStU
   aRstE:=GMJD(K_0->RadStE)
   aRstB:=GMJD(K_0->RadStB)
@@ -121,7 +121,7 @@ FUNCTION GS()
 RETURN aRStU[1]
 
 
-FUNCTION DC(xVr,aRadi)
+function DC(xVr,aRadi)
  LOCAL i:=0, xVrati:=0
  altd()
   FOR i:=1 TO LEN(aRadi)
@@ -133,24 +133,29 @@ FUNCTION DC(xVr,aRadi)
 RETURN xVrati
 
 
-PROCEDURE GenNerDan()
- aDani:={0,0,0,0,0,0,0}
-//       N P U S C P S
-//       1 2 3 4 5 6 7
- cGodina:="2000"
- cSubote   := "1"   // 1-samo prva radna
- cNedjelje := "0"   // 0-sve neradne
 
- IF !VarEdit({ {"Za godinu"                                                ,"cGodina"   ,""                ,"9999" ,""},;
+function GenNerDan()
+
+aDani:={0,0,0,0,0,0,0}
+//      N P U S C P S
+//      1 2 3 4 5 6 7
+cGodina:="2000"
+cSubote   := "1"   
+// 1-samo prva radna
+cNedjelje := "0"   
+// 0-sve neradne
+
+IF !VarEdit({ {"Za godinu"                                                ,"cGodina"   ,""                ,"9999" ,""},;
                {"SUBOTE   (0-sve neradne/1-prva u mjes.radna/9-sve radne)" ,"cSubote"   ,"cSubote$'019'"   ,"9"    ,""},;
                {"NEDJELJE (0-sve neradne/1-prva u mjes.radna/9-sve radne)" ,"cNedjelje" ,"cNedjelje$'019'" ,"9"    ,""} },;
                7,1,20,78,"USLOV ZA NERADNE SUBOTE I NEDJELJE","B1")
-   RETURN
- ENDIF
+   return
+ENDIF
 
- dLastD:=CTOD("01.01."+cGodina)
- dDatum:=CTOD("01.01."+cGodina)
- DO WHILE YEAR(dDatum)==VAL(cGodina)
+dLastD:=CTOD("01.01."+cGodina)
+dDatum:=CTOD("01.01."+cGodina)
+
+DO WHILE YEAR(dDatum)==VAL(cGodina)
    IF MONTH(dDatum)<>MONTH(dLastD); aDani:={0,0,0,0,0,0,0}; ENDIF
    IF DOW(dDatum)==1        // nedjelja
      IF cNedjelje=="0" .or. cNedjelje=="1".and.aDani[1] > 0
@@ -174,11 +179,12 @@ PROCEDURE GenNerDan()
    ++aDani[DOW(dDatum)]
    dLastD:=dDatum
    dDatum:=dDatum+1
- ENDDO
-RETURN
+ENDDO
+
+return
 
 
-FUNCTION ZadDanGO(dPDanGO,nDanaGO)
+function ZadDanGO(dPDanGO,nDanaGO)
   LOCAL nArr:=SELECT(), nSubota:=0
   IF EMPTY(dPDanGO).or.nDanaGO==0; RETURN (CTOD("")); ENDIF
   SELECT (F_NERDAN); IF !USED(); O_NERDAN; ENDIF
@@ -196,7 +202,7 @@ FUNCTION ZadDanGO(dPDanGO,nDanaGO)
 RETURN (dPDanGO)
 
 
-FUNCTION DatVrGO(dZDanGO)
+function DatVrGO(dZDanGO)
   LOCAL nArr:=SELECT()
   IF EMPTY(dZDanGO); RETURN (CTOD("")); ENDIF
   SELECT (F_NERDAN); IF !USED(); O_NERDAN; ENDIF
@@ -211,7 +217,8 @@ FUNCTION DatVrGO(dZDanGO)
   SELECT (nArr)
 RETURN (dZDanGO)
 
-FUNCTION ImaRDana(dOd,dDo)
+
+function ImaRDana(dOd,dDo)
  LOCAL nDana:=0, i:=0, nSubota:=0
  LOCAL nArr:=SELECT()
  SELECT (F_NERDAN); IF !USED(); O_NERDAN; ENDIF
@@ -226,28 +233,29 @@ FUNCTION ImaRDana(dOd,dDo)
 RETURN nDana
 
 
-
-*************************
-*************************
-function Tacno(aUsl)
+// -----------------------------------------------
+// ova funkcija vjerovatno ne treba vise ???????
+// -----------------------------------------------
+function __Tacno(aUsl)
 local i
 private cPom
 
 if len(aUsl)==0
- return .t.
+	return .t.
 endif
 
 for i:=1 to len(aUsl)
- cPom:=aUsl[i]
- if &cPom
-   return .t.
- endif
+	cPom:=aUsl[i]
+ 	if &cPom
+   		return .t.
+ 	endif
 next
 return .f.
 
-*************************
-*************************
-function TacnoN(aUsl,bIni,bWhile,bSkip,bEnd)
+// -----------------------------------------------
+// ni ova 
+// -----------------------------------------------
+function __TacnoN(aUsl,bIni,bWhile,bSkip,bEnd)
 local i
 private cPom
 
@@ -273,7 +281,8 @@ Eval(bEnd)
 return .f.
 
 
-FUNCTION IzborFajla(cPutanja,cAtrib)
+
+function IzborFajla(cPutanja,cAtrib)
  PRIVATE opc:={},Izb:=1,h:={}
  opc:=ListaFajlova(cPutanja,cAtrib)
  AEVAL(opc,{|x| AADD(h,IscitajZF(SUBSTR(x,4)))})
@@ -284,22 +293,25 @@ FUNCTION IzborFajla(cPutanja,cAtrib)
  ENDIF
  Izb:=Menu("",opc,Izb,.t.,"1-1")
  IF Izb>0; Menu("",opc,0,.f.); ENDIF
-RETURN IF( Izb==0 , "" , SUBSTR(opc[izb],4) )
+return IF( Izb==0 , "" , SUBSTR(opc[izb],4) )
 
-FUNCTION ListaFajlova(cPutanja,cAtrib)
+
+
+function ListaFajlova(cPutanja,cAtrib)
  LOCAL aNiz:=DIRECTORY(cPutanja,cAtrib)
  LOCAL i:=0,aVrati:={}
  ASORT(aNiz,,,{|x,y| x[1]<y[1]})
  AEVAL(aNiz,{|x| ++i, AADD(aVrati,IF(i<10,STR(i,1),CHR(55+i))+". "+x[1])} )
-RETURN aVrati
+return aVrati
 
-FUNCTION IscitajZF(cFajl)
+
+function IscitajZF(cFajl)
  LOCAL nP1:=0,nP2:=0,nH:=0,cVrati:=""
  nH:=FOPEN(cFajl,2)
  FSEEK(nH,0); cVrati:=FREADSTR(nH,80)
  nP1:=AT('"',cVrati); nP2:=RAT('"',cVrati)
  FCLOSE(nH)
-RETURN IF( nP1<nP2, SUBSTR(cVrati,nP1+1,nP2-nP1-1), "")
+return IF( nP1<nP2, SUBSTR(cVrati,nP1+1,nP2-nP1-1), "")
 
 
 

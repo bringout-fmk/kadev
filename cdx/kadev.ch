@@ -45,6 +45,7 @@
 #define APRISUTNOST  16
 #define ABROJ_LEG    17
 #define ABROJ        17
+#define EXE_PATH   FilePath(Arg0())
 
 #command DEL2                                                            ;
       => (nArr)->(DbDelete())                                            ;
