@@ -38,6 +38,10 @@ AADD(opc, "E. stope benef.r.st ")
 AADD(opcexe, {|| p_kbenrst() })
 AADD(opc, "F. neradni dani ")
 AADD(opcexe, {|| p_nerdan() })
+AADD(opc, "--------------------------- ")
+AADD(opcexe, {|| nil })
+AADD(opc, "R. rjesenja ")
+AADD(opcexe, {|| p_rjes() })
 
 Menu_SC("sifrarnik")
 
