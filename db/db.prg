@@ -146,7 +146,7 @@ if (nArea == -1 .or. nArea == (F_K_0))
   	// ID VES-a
   	AADD(aDbf, {"IDCin","C",2,0} )
   	// ID Cin-a
-	AADD(aDbf, {"NazSekr","C",20,0} )
+	AADD(aDbf, {"NazSekr", "C",50,0} )
 	AADD(aDbf, {"Operater","C",10,0} )
   	AADD(aDbf, {"Date","D",8,0}  )
  	AADD(aDbf, {"Time","C",8,0} )
@@ -161,7 +161,9 @@ CREATE_INDEX("3" , "id2"              , KUMPATH+"k_0")
 CREATE_INDEX("4" , "idrj+idrmj"       , KUMPATH+"k_0")
 
 if (nArea == -1 .or. nArea == (F_K_1))
+  
   if !FILE(KUMPATH + "K_1.DBF")
+	
 	aDbf:={ {"ID","C",13,0} ,;
                   {"DatumOd","D",8,0} ,;
                   {"DatumDo","D",8,0} ,;
@@ -174,6 +176,13 @@ if (nArea == -1 .or. nArea == (F_K_1))
                   {"IdRMJ","C",4,0} ,;
                   {"nAtr1","N",11,2} ,;
                   {"nAtr2","N",11,2} ,;
+                  {"nAtr3","N", 2,0} ,;
+                  {"nAtr4","N", 2,0} ,;
+                  {"nAtr5","N", 2,0} ,;
+                  {"nAtr6","N", 2,0} ,;
+                  {"nAtr7","N", 2,0} ,;
+                  {"nAtr8","N", 2,0} ,;
+                  {"nAtr9","N", 2,0} ,;
                   {"cAtr1","C",10,0} ,;
                   {"cAtr2","C",10,0} ;
                 }
