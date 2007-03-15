@@ -1,0 +1,20 @@
+
+
+********************** PO SISTEMAT. - STR.ISPIT **********************
+
+                          Str.ispit
+                         ==========
+
+PREGLED predvi\enog broja radnika sa neophodnim str.ispitom po vrstama
+-----------------------------------
+Gimnazija                         9
+Ekonomska                        30
+Ostale srednje [kole             69
+I stepen pravnog fakult.         11
+6.stepen ekon.struke             17
+Ostale vi[e [kole                17
+Pravni fakultet                  35
+Ekonomski fakultet               34
+Ostali fakulteti                 61
+UKUPNO:                         283
+-----------------------------------
