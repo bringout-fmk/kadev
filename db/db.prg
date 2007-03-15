@@ -155,6 +155,11 @@ if (nArea == -1 .or. nArea == (F_K_0))
   endif
 endif
 
+CREATE_INDEX("1" , "id"               , KUMPATH+"k_0")
+CREATE_INDEX("2" , "btoe(prezime+ime)", KUMPATH+"k_0")
+CREATE_INDEX("3" , "id2"              , KUMPATH+"k_0")
+CREATE_INDEX("4" , "idrj+idrmj"       , KUMPATH+"k_0")
+
 if (nArea == -1 .or. nArea == (F_K_1))
   if !FILE(KUMPATH + "K_1.DBF")
 	aDbf:={ {"ID","C",13,0} ,;
@@ -176,6 +181,10 @@ if (nArea == -1 .or. nArea == (F_K_1))
   endif
 endif
 
+CREATE_INDEX("1" , "id+dtos(datumOd)" , KUMPATH+"k_1")
+CREATE_INDEX("2" , "dtos(datumOd)"    , KUMPATH+"k_1")
+CREATE_INDEX("3" , "id+idpromj"       , KUMPATH+"k_1")
+
 
 if (nArea == -1 .or. nArea == (F_PROMJ))
 
@@ -196,6 +205,9 @@ if (nArea == -1 .or. nArea == (F_PROMJ))
 
 endif
 
+CREATE_INDEX("id", "id", SIFPATH+"promj")
+CREATE_INDEX("naz", "naz", SIFPATH+"promj")
+
 if (nArea == -1 .or. nArea == (F_MZ))
   
   if !file( SIFPATH + "MZ.DBF" )
@@ -209,6 +221,8 @@ if (nArea == -1 .or. nArea == (F_MZ))
 
 endif
 
+CREATE_INDEX("id", "id", SIFPATH+"mz")
+CREATE_INDEX("naz", "naz", SIFPATH+"mz")
 
 if (nArea == -1 .or. nArea == (F_NERDAN))
 
@@ -223,6 +237,11 @@ if (nArea == -1 .or. nArea == (F_NERDAN))
 
 endif
 
+CREATE_INDEX("id", "id", SIFPATH+"nerdan")
+CREATE_INDEX("naz", "naz", SIFPATH+"nerdan")
+CREATE_INDEX("dat", "datum", SIFPATH+"nerdan")
+
+
 if (nArea == -1 .or. nArea == (F_RJ))
 
   if !file(SIFPATH+"RJ.dbf")
@@ -236,7 +255,8 @@ if (nArea == -1 .or. nArea == (F_RJ))
   endif
 
 endif
-
+CREATE_INDEX("id", "id", SIFPATH+"rj")
+CREATE_INDEX("naz", "naz", SIFPATH+"rj")
 
 if (nArea == -1 .or. nArea == (F_RMJ))
        
@@ -250,6 +270,8 @@ if (nArea == -1 .or. nArea == (F_RMJ))
   endif
 
 endif
+CREATE_INDEX("id", "id", SIFPATH+"rmj")
+CREATE_INDEX("naz", "naz", SIFPATH+"rmj")
 
 if (nArea == -1 .or. nArea == (F_RJRMJ))
 
@@ -276,6 +298,8 @@ if (nArea == -1 .or. nArea == (F_RJRMJ))
   endif
 
 endif
+CREATE_INDEX("id", "IDRJ+IDRMJ", SIFPATH+"rjrmj")
+
 
 if (nArea == -1 .or. nArea == (F_STRSPR))
         if !file(SIFPATH+"StrSpr.dbf")
@@ -286,6 +310,9 @@ if (nArea == -1 .or. nArea == (F_STRSPR))
           DBCREATE2(SIFPATH+"StrSpr",aDbf)
         endif
 endif
+CREATE_INDEX("id", "id", SIFPATH+"strspr")
+CREATE_INDEX("naz", "naz", SIFPATH+"strspr")
+
 
 if (nArea == -1 .or. nArea == (F_K1))
         if !file(SIFPATH+"K1.dbf")
@@ -296,6 +323,8 @@ if (nArea == -1 .or. nArea == (F_K1))
           DBCREATE2(SIFPATH+"K1",aDbf)
         endif
 endif
+CREATE_INDEX("id", "id", SIFPATH+"k1")
+CREATE_INDEX("naz", "naz", SIFPATH+"k1")
 
 
 if (nArea == -1 .or. nArea == (F_K2))
@@ -308,6 +337,9 @@ if (nArea == -1 .or. nArea == (F_K2))
           DBCREATE2(SIFPATH+"K2",aDbf)
         endif
 endif
+CREATE_INDEX("id", "id", SIFPATH+"k2")
+CREATE_INDEX("naz", "naz", SIFPATH+"k2")
+
 
 if (nArea == -1 .or. nArea == (F_ZANIM))
         if !file(SIFPATH+"zanim.dbf")
@@ -318,6 +350,8 @@ if (nArea == -1 .or. nArea == (F_ZANIM))
           DBCREATE2(SIFPATH+"zanim",aDbf)
         endif
 endif
+CREATE_INDEX("id", "id", SIFPATH+"zanim")
+CREATE_INDEX("naz", "naz", SIFPATH+"zanim")
 
 
 if (nArea == -1 .or. nArea == (F_RRASP))
@@ -330,6 +364,8 @@ if (nArea == -1 .or. nArea == (F_RRASP))
           DBCREATE2(SIFPATH+"RRasp",aDbf)
         endif
 endif
+CREATE_INDEX("id", "id", SIFPATH+"rrasp")
+CREATE_INDEX("naz", "naz", SIFPATH+"rrasp")
 
 
 if (nArea == -1 .or. nArea == (F_VES))
@@ -341,6 +377,9 @@ if (nArea == -1 .or. nArea == (F_VES))
           DBCREATE2(SIFPATH+"VES",aDbf)
         endif
 endif
+CREATE_INDEX("id", "id", SIFPATH+"ves")
+CREATE_INDEX("naz", "naz", SIFPATH+"ves")
+
 
 if (nArea == -1 .or. nArea == (F_CIN))
         if !file(SIFPATH+"CIN.DBF")
@@ -351,6 +390,9 @@ if (nArea == -1 .or. nArea == (F_CIN))
           DBCREATE2(SIFPATH+"CIN",aDbf)
         endif
 endif
+CREATE_INDEX("id", "id", SIFPATH+"cin")
+CREATE_INDEX("naz", "naz", SIFPATH+"cin")
+
 
 if (nArea == -1 .or. nArea == (F_NAC))
         if !file(SIFPATH+"NAC.DBF")
@@ -361,6 +403,9 @@ if (nArea == -1 .or. nArea == (F_NAC))
           DBCREATE2(SIFPATH+"NAC",aDbf)
         endif
 endif
+CREATE_INDEX("id", "id", SIFPATH+"nac")
+CREATE_INDEX("naz", "naz", SIFPATH+"nac")
+
 
 if (nArea == -1 .or. nArea == (F_KBENRST))
         if !file(SIFPATH+"KBENRST.DBF")
@@ -370,6 +415,7 @@ if (nArea == -1 .or. nArea == (F_KBENRST))
           DBCREATE2(SIFPATH+"KBENRST",aDbf)
         endif
 endif
+CREATE_INDEX("id", "id", SIFPATH+"kbenrst")
 
 
 if (nArea == -1 .or. nArea == (F_OBRAZDEF))
@@ -387,6 +433,7 @@ if (nArea == -1 .or. nArea == (F_OBRAZDEF))
      MsgC()
    endif
 endif
+CREATE_INDEX("1" , "tip+grupa+red_br", KUMPATH+"obrazdef")
 
 
 if (nArea == -1 .or. nArea == (F_GLOBUSL))
@@ -399,12 +446,13 @@ if (nArea == -1 .or. nArea == (F_GLOBUSL))
      DBCREATE2(KUMPATH+"GLOBUSL",aDbf)
    endif
 
-
 endif
+CREATE_INDEX("1" , "Komentar", KUMPATH+"GlobUsl")
 
 
 if (nArea == -1 .or. nArea == (F_USLOVI))
-   if !file(KUMPATH+'uslovi.dbf')
+  
+  if !file(KUMPATH+'uslovi.dbf')
      aDBF:={}
      AADD(aDbf,{"ID"        , "C",   8, 0})
      AADD(aDbf,{"NAZ"       , "C",  25, 0})
@@ -413,70 +461,8 @@ if (nArea == -1 .or. nArea == (F_USLOVI))
    endif
 
 endif
-
-
-#ifndef C50
-
- CREATE_INDEX("1" , "tip+grupa+red_br", KUMPATH+"obrazdef")
- CREATE_INDEX("1" , "Komentar"        , KUMPATH+"GlobUsl")
- CREATE_INDEX("1" , "id"              , KUMPATH+"uslovi")
- CREATE_INDEX("2" , "naz"             , KUMPATH+"uslovi")
- CREATE_INDEX("1"     , "id"               , KUMPATH+"k_0")
- CREATE_INDEX("2"     , "btoe(prezime+ime)", KUMPATH+"k_0")
- CREATE_INDEX("3"     , "id2"              , KUMPATH+"k_0")
- CREATE_INDEX("4"     , "idrj+idrmj"       , KUMPATH+"k_0")
- CREATE_INDEX("1"     , "id+dtos(datumOd)" , KUMPATH+"k_1")
- CREATE_INDEX("2"     , "dtos(datumOd)"    , KUMPATH+"k_1")
- CREATE_INDEX("3"     , "id+idpromj"       , KUMPATH+"k_1")
- CREATE_INDEX("id"     , "id"               , SIFPATH+"promj")
- CREATE_INDEX("id"     , "id"               , SIFPATH+"rj")
- CREATE_INDEX("id"     , "id"               , SIFPATH+"rmj")
- CREATE_INDEX("id"     , "IDRJ+IDRMJ"       , SIFPATH+"rjrmj")
- CREATE_INDEX("id"     , "id"               , SIFPATH+"strspr")
- CREATE_INDEX("id"     , "id"               , SIFPATH+"mz")
- CREATE_INDEX("id"     , "id"               , SIFPATH+"k1")
- CREATE_INDEX("id"     , "id"               , SIFPATH+"k2")
- CREATE_INDEX("id"     , "id"               , SIFPATH+"zanim")
- CREATE_INDEX("id"     , "id"               , SIFPATH+"rrasp")
- CREATE_INDEX("id"     , "id"               , SIFPATH+"cin")
- CREATE_INDEX("id"     , "id"               , SIFPATH+"ves")
- CREATE_INDEX("id"     , "id"               , SIFPATH+"nac")
- CREATE_INDEX("id"     , "id"               , SIFPATH+"kbenrst")
- CREATE_INDEX("id"     , "id"               , SIFPATH+"nerdan")
- CREATE_INDEX("dat"    , "datum"            , SIFPATH+"nerdan")
-
-#else
-
- CREATE_INDEX(KUMPATH+"obrazde1", "tip+grupa+red_br", KUMPATH+"obrazdef")
- CREATE_INDEX(KUMPATH+"globus1" , "Komentar"        , KUMPATH+"GlobUsl")
-
- CREATE_INDEX(KUMPATH+"uslovi1" , "id"              , KUMPATH+"uslovi")
- CREATE_INDEX(KUMPATH+"uslovi2" , "naz"             , KUMPATH+"uslovi")
-
- CREATE_INDEX(KUMPATH+"id1"     , "id"               , KUMPATH+"k_0")
- CREATE_INDEX(KUMPATH+"prez1"   , "btoe(prezime+ime)", KUMPATH+"k_0")
- CREATE_INDEX(KUMPATH+"id2_1"   , "id2"              , KUMPATH+"k_0")
- CREATE_INDEX(KUMPATH+"rjrmj1"  , "idrj+idrmj"       , KUMPATH+"k_0")
-
- CREATE_INDEX(KUMPATH+"id2"     , "id+dtos(datumOd)" , KUMPATH+"k_1")
- CREATE_INDEX(KUMPATH+"dat2"    , "dtos(datumOd)"    , KUMPATH+"k_1")
-
- CREATE_INDEX(SIFPATH+"id3"     , "id"               , SIFPATH+"promj")
- CREATE_INDEX(SIFPATH+"id4"     , "id"               , SIFPATH+"rj")
- CREATE_INDEX(SIFPATH+"id5"     , "id"               , SIFPATH+"rmj")
- CREATE_INDEX(SIFPATH+"id6"     , "IDRJ+IDRMJ"       , SIFPATH+"rjrmj")
- CREATE_INDEX(SIFPATH+"id7"     , "id"               , SIFPATH+"strspr")
- CREATE_INDEX(SIFPATH+"id8"     , "id"               , SIFPATH+"mz")
- CREATE_INDEX(SIFPATH+"id9"     , "id"               , SIFPATH+"k1")
- CREATE_INDEX(SIFPATH+"id10"    , "id"               , SIFPATH+"k2")
- CREATE_INDEX(SIFPATH+"id11"    , "id"               , SIFPATH+"zanim")
- CREATE_INDEX(SIFPATH+"id12"    , "id"               , SIFPATH+"rrasp")
- CREATE_INDEX(SIFPATH+"id13"    , "id"               , SIFPATH+"cin")
- CREATE_INDEX(SIFPATH+"id14"    , "id"               , SIFPATH+"ves")
- CREATE_INDEX(SIFPATH+"id15"    , "id"               , SIFPATH+"nac")
- CREATE_INDEX(SIFPATH+"id16"    , "id"               , SIFPATH+"kbenrst")
-
-#endif
+CREATE_INDEX("1" , "id", KUMPATH+"uslovi")
+CREATE_INDEX("2" , "naz", KUMPATH+"uslovi")
 
 if !file(SIFPATH+"RJES.DBF")
    aDbf:={ { "id"       , "C" ,  2 , 0 } ,;
@@ -487,9 +473,9 @@ if !file(SIFPATH+"RJES.DBF")
          }
    DBCREATE2(SIFPATH+"RJES",aDbf)
 endif
+CREATE_INDEX("id" , "id" , SIFPATH+"RJES")
+CREATE_INDEX("naz" , "naz" , SIFPATH+"RJES")
 
-CREATE_INDEX("id"     , "id"               , SIFPATH+"RJES")
-CREATE_INDEX("naz"    , "naz"              , SIFPATH+"RJES")
 
 if !file(SIFPATH+"DEFRJES.DBF")
    aDbf:={ { "id"       , "C" ,   2 , 0 } ,;

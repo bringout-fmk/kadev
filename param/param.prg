@@ -15,6 +15,7 @@ private aPars := {}
 // citaj parametre
 RPar("tp", @gTrPromjena)
 RPar("pr", @gnLMarg)
+RPar("p1", @gnTMarg)
 RPar("tb", @gTabela)
 Rpar("a4", @gA43)
 Rpar("rs", @gnRedova)
@@ -30,9 +31,11 @@ UsTipke()
 set cursor on
 
 AADD(aPars, { "Naziv firme", ;
-	"gNFirma",,,})
+	"gNFirma" , , , })
 AADD(aPars, { "Lijeva margina pri stampanju", ;
-	"gNLMarg", , "99" })
+	"gNLMarg", , "99", } )
+AADD(aPars, { "Gornja margina pri stampanju", ;
+	"gNTMarg", , "99", } )
 AADD(aPars, { "Tip tabele  (0/1/2)", ;
 	"gTabela", "gTabela>=0.and.gTabela<3", "9",  } )
 AADD(aPars, {"Broj redova po stranici", ;
@@ -59,6 +62,7 @@ BosTipke()
 if LastKey() <> K_ESC
 	WPar("tp",gTrPromjena)
   	WPar("pr",gnLMarg)
+  	WPar("p2",gnTMarg)
   	WPar("tb",gTabela)
   	Wpar("a4",gA43)
   	Wpar("rs",gnRedova)

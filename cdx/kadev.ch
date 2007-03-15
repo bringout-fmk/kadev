@@ -21,6 +21,7 @@
 #define F_DEFRJES   21
 #define F_NERDAN    22
 #define F_POM       23
+
 #define I_ID         1
 #define I_PREZIME    2
 #define I_ID2        3
@@ -45,15 +46,12 @@
 #define ABROJ_LEG    17
 #define ABROJ        17
 
-
-#define EXE_PATH   FilePath(Arg0())
-
 #command DEL2                                                            ;
       => (nArr)->(DbDelete())                                            ;
         ;(nTmpArr)->(DbDelete())
 
-#xcommand O_K_0     =>  select(F_K_0);     use (KUMPATH+"k_0")    ; set order to 1
-#xcommand O_K_1     =>  select(F_K_1);     use (KUMPATH+"k_1")    ; set order to 1
+#xcommand O_K_0     =>  select(F_K_0);     use (KUMPATH+"k_0")    ; set order to tag "1"
+#xcommand O_K_1     =>  select(F_K_1);     use (KUMPATH+"k_1")    ; set order to tag "1"
 #xcommand O_PROMJ   =>  select(F_PROMJ);   use (SIFPATH+"promj")  ; set order to tag "ID"
 #xcommand O_RJ      =>  select(F_RJ);      use (SIFPATH+"rj")     ; set order to tag "ID"
 #xcommand O_RMJ     =>  select(F_RMJ);     use (SIFPATH+"rmj")    ; set order to tag "ID"
@@ -71,8 +69,7 @@
 #xcommand O_KBENRST =>  select(F_KBENRST); use (SIFPATH+"kbenrst"); set order to tag "ID"
 #xcommand O_RJES    =>  select(F_RJES);    use (SIFPATH+"rjes")   ; set order to tag "ID"
 #xcommand O_DEFRJES =>  select(F_DEFRJES); use (SIFPATH+"defrjes"); set order to tag "1"
-
-#xcommand O_GLOBUSL  => select(F_GLOBUSL);  USE (KUMPATH+"globusl") ; set order to 1
-#xcommand O_OBRAZDEF => select(F_OBRAZDEF); USE (KUMPATH+"obrazdef"); set order to 1
-#xcommand O_USLOVI   => select(F_USLOVI);   USE (KUMPATH+"uslovi")  ; set order to 1
+#xcommand O_GLOBUSL  => select(F_GLOBUSL);  USE (KUMPATH+"globusl") ; set order to tag "1"
+#xcommand O_OBRAZDEF => select(F_OBRAZDEF); USE (KUMPATH+"obrazdef"); set order to tag "1"
+#xcommand O_USLOVI   => select(F_USLOVI);   USE (KUMPATH+"uslovi")  ; set order to tag "1"
 

@@ -5,6 +5,7 @@
 // otvaranje tabela 
 // ---------------------------------
 function o_tables()
+
 O_RJES
 O_DEFRJES
 O_K_0
@@ -21,7 +22,11 @@ O_ZANIM
 O_RRASP
 O_CIN
 O_VES
+O_NERDAN
 O_NAC
 O_KBENRST
+O_OBRAZDEF
+O_USLOVI
+O_GLOBUSL
 
 return

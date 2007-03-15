@@ -162,7 +162,7 @@ AADD(opcexe, {|| mnu_sif() })
 AADD(opc, "------------------------------------")
 AADD(opcexe, {|| nil })
 AADD(opc, "9. administracija baze")
-AADD(opcexe, {|| goModul:oDataBase:admin() })
+AADD(opcexe, {|| goModul:oDataBase:install() })
 AADD(opc, "------------------------------------")
 AADD(opcexe, {|| nil })
 AADD(opc, "X. parametri")
@@ -190,6 +190,7 @@ O_PARAMS
 
 public glBezVoj := ( IzFMKINI("KADEV","BezVojneEvidencije","N",KUMPATH)=="D" )
 public gnLMarg:=1
+public gnTMarg:=1
 // lijeva margina teksta
 public gTabela:=1          
 // fino crtanje tabele
@@ -213,6 +214,7 @@ private cSection:="1",cHistory:=" "; aHistory:={}
 
 RPar("tb",@gTabela)
 RPar("pr",@gnLMarg)
+RPar("p1",@gnTMarg)
 Rpar("a4",@gA43)
 Rpar("rs",@gnRedova)
 Rpar("os",@gOstr)

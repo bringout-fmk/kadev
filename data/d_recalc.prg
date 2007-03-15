@@ -69,7 +69,7 @@ set relation to idRrasp into RRasp
 
 
 dDoDat:=DATE()
-Box("b0XX",1,32,.f.)
+Box("b0XX", 1, 65,.f.)
  set cursor on
  @ m_x+1,m_y+2 SAY "Kalkulacija do datuma:" GET dDoDat
  read
@@ -233,7 +233,7 @@ IF lPom
   dDoDat:=DATE()      // ?
 ELSE
   dDoDat:=DATE()
-  Box("b0XX",1,32,.f.)
+  Box("b0XX",1,65,.f.)
    set cursor on
    @ m_x+1,m_y+2 SAY "Kalkulacija do datuma:" GET dDoDat
    read
