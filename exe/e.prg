@@ -1,4 +1,4 @@
-#include "\dev\fmk\kadev\kadev.ch"
+#include "kadev.ch"
 
 #ifndef CPP
 EXTERNAL RIGHT,LEFT
